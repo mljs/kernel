@@ -13,15 +13,21 @@ A factory for kernel functions
 
 ## Usage
 
-### kernel(type, options)
+### new Kernel(type, options)
 
-Returns a kernel function. This function can be called with a matrix of input vectors
+This function can be called with a matrix of input vectors
 and optional landmarks. If no landmark is provided, the input vectors will be used.
 
-## Available kernels
+__Available kernels__
 
-* [Gaussian (radial basis function) kernel](https://github.com/mljs/gaussian-kernel)
-* [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
+* `gaussian` or `rbf` - [Gaussian (radial basis function) kernel](https://github.com/mljs/gaussian-kernel)
+* `polynomial` or `poly` - [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
+
+### kernel.compute(inputs, landmarks)
+
+This function can be called with a matrix of input vectors and optional landmarks.
+If no landmark is provided, the input vectors will be used.  
+The function returns a kernel matrix of feature space vectors.
 
 ## License
 

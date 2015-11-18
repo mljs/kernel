@@ -1,24 +1,24 @@
 'use strict';
 
-var kernel = require('..');
+var Kernel = require('..');
 
 describe('kernel factory', function () {
     it('should create a gaussian kernel function', function () {
-        var kernelFunction = kernel('gaussian');
-        Array.from(kernelFunction([[1, 1]], [[1, 1]])).should.eql([[1]]);
-        Array.from(kernelFunction([[1, 1]])).should.eql([[1]]); // auto landmarks
+        var kernel = new Kernel('gaussian');
+        Array.from(kernel.compute([[1, 1]], [[1, 1]])).should.eql([[1]]);
+        Array.from(kernel.compute([[1, 1]])).should.eql([[1]]); // auto landmarks
     });
     it('should create a polynomial kernel function', function () {
-        var kernelFunction = kernel('polynomial');
-        Array.from(kernelFunction([[1, 1]], [[1, 1]])).should.eql([[3]]);
+        var kernel = new Kernel('polynomial');
+        Array.from(kernel.compute([[1, 1]], [[1, 1]])).should.eql([[3]]);
     });
     it('should be case-insensitive', function () {
-        kernel('GaUsSian');
-        kernel('RBF');
+        new Kernel('GaUsSian');
+        new Kernel('RBF');
     });
     it('should throw on invalid types', function () {
         (function () {
-            kernel('abc');
+            new Kernel('abc');
         }).should.throw(/unsupported kernel type/);
     });
 });

@@ -1,29 +1,52 @@
 'use strict';
 
-const gaussianKernel = require('ml-gaussian-kernel');
-const polynomialKernel = require('ml-polynomial-kernel');
+const Matrix = require('ml-matrix');
 
-module.exports = kernel;
+const GaussianKernel = require('ml-gaussian-kernel');
+const PolynomialKernel = require('ml-polynomial-kernel');
 
-function kernel(type, options) {
-    var kernelFunction;
-    switch (type.toLowerCase()) {
-        case 'gaussian':
-        case 'rbf':
-            kernelFunction = gaussianKernel;
-            break;
-        case 'polynomial':
-        case 'poly':
-            kernelFunction = polynomialKernel;
-            break;
-        default:
-            throw new Error('unsupported kernel type: ' + type);
+class Kernel {
+    constructor (type, options) {
+        if (typeof type === 'string') {
+            switch (type.toLowerCase()) {
+                case 'gaussian':
+                case 'rbf':
+                    this.kernelFunction = new GaussianKernel(options);
+                    break;
+                case 'polynomial':
+                case 'poly':
+                    this.kernelFunction = new PolynomialKernel(options);
+                    break;
+                default:
+                    throw new Error('unsupported kernel type: ' + type);
+            }
+        } else if (typeof type === 'object' && typeof type.compute === 'function') {
+            this.kernelFunction = type;
+        } else {
+            throw new TypeError('first argument must be a valid kernel type or instance');
+        }
     }
 
-    return function (inputs, landmarks) {
+    compute(inputs, landmarks) {
         if (landmarks === undefined) {
             landmarks = inputs;
         }
-        return kernelFunction(inputs, landmarks, options);
-    };
+        const kernelMatrix = new Matrix(inputs.length, landmarks.length);
+        if (inputs === landmarks) { // fast path, matrix is symmetric
+            for (var i = 0; i < inputs.length; i++) {
+                for (var j = i; j < inputs.length; j++) {
+                    kernelMatrix[i][j] = kernelMatrix[j][i] = this.kernelFunction.compute(inputs[i], inputs[j]);
+                }
+            }
+        } else {
+            for (var i = 0; i < inputs.length; i++) {
+                for (var j = 0; j < landmarks.length; j++) {
+                    kernelMatrix[i][j] = this.kernelFunction.compute(inputs[i], landmarks[j]);
+                }
+            }
+        }
+        return kernelMatrix;
+    }
 }
+
+module.exports = Kernel;

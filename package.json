@@ -35,7 +35,8 @@
     "should": "^7.1.1"
   },
   "dependencies": {
-    "ml-gaussian-kernel": "^1.0.0",
-    "ml-polynomial-kernel": "^1.0.0"
+    "ml-gaussian-kernel": "^2.0.0",
+    "ml-matrix": "^1.0.2",
+    "ml-polynomial-kernel": "^2.0.0"
   }
 }

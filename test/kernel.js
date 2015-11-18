@@ -8,6 +8,10 @@ describe('kernel factory', function () {
         Array.from(kernelFunction([[1, 1]], [[1, 1]])).should.eql([[1]]);
         Array.from(kernelFunction([[1, 1]])).should.eql([[1]]); // auto landmarks
     });
+    it('should create a polynomial kernel function', function () {
+        var kernelFunction = kernel('polynomial');
+        Array.from(kernelFunction([[1, 1]], [[1, 1]])).should.eql([[3]]);
+    });
     it('should be case-insensitive', function () {
         kernel('GaUsSian');
         kernel('RBF');

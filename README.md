@@ -21,6 +21,7 @@ and optional landmarks. If no landmark is provided, the input vectors will be us
 ## Available kernels
 
 * [Gaussian (radial basis function) kernel](https://github.com/mljs/gaussian-kernel)
+* [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
 
 ## License
 

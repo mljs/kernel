@@ -1,6 +1,7 @@
 'use strict';
 
 const gaussianKernel = require('ml-gaussian-kernel');
+const polynomialKernel = require('ml-polynomial-kernel');
 
 module.exports = kernel;
 
@@ -10,6 +11,10 @@ function kernel(type, options) {
         case 'gaussian':
         case 'rbf':
             kernelFunction = gaussianKernel;
+            break;
+        case 'polynomial':
+        case 'poly':
+            kernelFunction = polynomialKernel;
             break;
         default:
             throw new Error('unsupported kernel type: ' + type);

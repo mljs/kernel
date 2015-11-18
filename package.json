@@ -1,6 +1,6 @@
 {
   "name": "ml-kernel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A factory for kernel functions",
   "main": "kernel.js",
   "scripts": {

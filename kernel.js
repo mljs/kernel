@@ -9,20 +9,18 @@ class Kernel
 {
     constructor( type, options )
     {
+        var kernelType = {"gaussian" : new GaussianKernel( options ), "rbf" : new GaussianKernel( options ),
+            "polynomial" : new PolynomialKernel( options ), "poly" : new PolynomialKernel( options )};
         if( typeof type === "string" )
-            switch( type.toLowerCase() )
-            {
-                case "gaussian":
-                case "rbf":
-                    this.kernelFunction = new GaussianKernel( options );
-                    break;
-                case "polynomial":
-                case "poly":
-                    this.kernelFunction = new PolynomialKernel( options );
-                    break;
-                default:
-                    throw new Error( "unsupported kernel type: " + type );
-            }
+        {
+            type = type.toLowerCase();
+
+            var aux = kernelType[type];
+            if( aux == null )
+                throw new Error( "unsupported kernel type: " + type );
+
+            this.kernelFunction = aux;
+        }
         else if( typeof type === "object" && typeof type.compute === "function" )
             this.kernelFunction = type;
         else

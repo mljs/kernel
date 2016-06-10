@@ -19,7 +19,7 @@ describe( "kernel factory", function ()
     {
         new Kernel( "GaUsSian" );
         new Kernel( "RBF" );
-    });
+    } );
     it( "should throw on invalid types", function ()
     {
         ( function ()

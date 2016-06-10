@@ -4,13 +4,15 @@ const Matrix = require( "ml-matrix" );
 
 const GaussianKernel = require( "ml-gaussian-kernel" );
 const PolynomialKernel = require( "ml-polynomial-kernel" );
+const ExponentialKernel = require( "./kernels/exponential-kernel" );
 
 class Kernel
 {
     constructor( type, options )
     {
         var kernelType = {"gaussian" : new GaussianKernel( options ), "rbf" : new GaussianKernel( options ),
-            "polynomial" : new PolynomialKernel( options ), "poly" : new PolynomialKernel( options )};
+            "polynomial" : new PolynomialKernel( options ), "poly" : new PolynomialKernel( options ),
+            "exponential" : new ExponentialKernel( options )};
         if( typeof type === "string" )
         {
             type = type.toLowerCase();

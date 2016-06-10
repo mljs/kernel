@@ -1,24 +1,30 @@
-'use strict';
+"use strict";
 
 var Kernel = require('..');
 
-describe('kernel factory', function () {
-    it('should create a gaussian kernel function', function () {
-        var kernel = new Kernel('gaussian');
-        Array.from(kernel.compute([[1, 1]], [[1, 1]])).should.eql([[1]]);
-        Array.from(kernel.compute([[1, 1]])).should.eql([[1]]); // auto landmarks
+describe( "kernel factory", function ()
+{
+    it( "should create a gaussian kernel function", function ()
+    {
+        var kernel = new Kernel( "gaussian" );
+        Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
+        Array.from( kernel.compute( [[1, 1]] ) ).should.eql( [[1]] ); // auto landmarks
+    } );
+    it( "should create a polynomial kernel function", function ()
+    {
+        var kernel = new Kernel( "polynomial" );
+        Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[3]] );
+    } );
+    it( "should be case-insensitive", function ()
+    {
+        new Kernel( "GaUsSian" );
+        new Kernel( "RBF" );
     });
-    it('should create a polynomial kernel function', function () {
-        var kernel = new Kernel('polynomial');
-        Array.from(kernel.compute([[1, 1]], [[1, 1]])).should.eql([[3]]);
-    });
-    it('should be case-insensitive', function () {
-        new Kernel('GaUsSian');
-        new Kernel('RBF');
-    });
-    it('should throw on invalid types', function () {
-        (function () {
+    it( "should throw on invalid types", function ()
+    {
+        ( function ()
+        {
             new Kernel('abc');
-        }).should.throw(/unsupported kernel type/);
-    });
-});
+        } ).should.throw( /unsupported kernel type/ );
+    } );
+} );

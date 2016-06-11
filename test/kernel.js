@@ -25,6 +25,11 @@ describe( "kernel factory", function ()
         var kernel = new Kernel( "laplacian" );
         Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
     } );
+    it( "should create a anova kernel function", function ()
+    {
+        var kernel = new Kernel( "anova" );
+        Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[2]] );
+    } );
     it( "should be case-insensitive", function ()
     {
         new Kernel( "GaUsSian" );

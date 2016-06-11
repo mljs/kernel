@@ -24,6 +24,7 @@ __Available kernels__
 * `polynomial` or `poly` - [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
 * `exponential` - [Exponential kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#exponential)
 * `laplacian` - [Laplacian kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#laplacian)
+* `anova` - [ANOVA kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#anova)
 
 ### kernel.compute(inputs, landmarks)
 

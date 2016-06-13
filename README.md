@@ -28,6 +28,7 @@ __Available kernels__
 * `rational quadratic` or `rational` - [Rational Quadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#rational)
 * `multiquadratic` - [Multiquadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#multiquadric)
 * `cauchy` - [Cauchy kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#cauchy)
+* `histogram intersection`, `histogram` or `min` - [Histogram Intersection kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#histogram)
 
 ### kernel.compute(inputs, landmarks)
 

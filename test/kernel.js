@@ -45,6 +45,11 @@ describe( "kernel factory", function ()
         var kernel = new Kernel( "cauchy" );
         Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
     } );
+    it( "should create a histogram intersection kernel function", function ()
+    {
+        var kernel = new Kernel( "histogram intersection" );
+        Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[2]] );
+    } );
     it( "should be case-insensitive", function ()
     {
         new Kernel( "GaUsSian" );

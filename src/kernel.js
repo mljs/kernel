@@ -10,6 +10,7 @@ const ANOVAKernel = require( "./kernels/anova-kernel" );
 const RationalQuadraticKernel = require( "./kernels/rational-quadratic-kernel" );
 const MultiquadraticKernel = require( "./kernels/multiquadratic-kernel" );
 const CauchyKernel = require( "./kernels/cauchy-kernel" );
+const HistogramIntersectionKernel = require( "./kernels/histogram-intersection-kernel" );
 
 class Kernel
 {
@@ -20,7 +21,8 @@ class Kernel
             "exponential" : new ExponentialKernel( options ), "laplacian" : new LaplacianKernel( options ),
             "anova" : new ANOVAKernel( options ), "rational quadratic" : new RationalQuadraticKernel( options ),
             "rational" : new RationalQuadraticKernel( options ), "multiquadratic" : new MultiquadraticKernel( options ),
-            "cauchy" : new CauchyKernel( options )};
+            "cauchy" : new CauchyKernel( options ), "histogram intersection" : new HistogramIntersectionKernel(),
+            "min" : new HistogramIntersectionKernel(), "histogram" : new HistogramIntersectionKernel()};
         if( typeof type === "string" )
         {
             type = type.toLowerCase();

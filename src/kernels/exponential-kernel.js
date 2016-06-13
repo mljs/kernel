@@ -13,7 +13,7 @@ class ExponentialKernel
     {
         options = Object.assign( {}, defaultOptions, options );
         this.sigma = options.sigma;
-        this.divisor = 2 * options.sigma ^ options.sigma;
+        this.divisor = 2 * options.sigma * options.sigma;
     }
 
     compute( x, y )

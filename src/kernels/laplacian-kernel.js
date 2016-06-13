@@ -1,6 +1,6 @@
 "use strict";
 
-const squaredEuclidean = require( "ml-euclidean-distance" ).squared;
+const euclidean = require( "ml-euclidean-distance" );
 
 const defaultOptions =
 {
@@ -17,7 +17,7 @@ class LaplacianKernel
 
     compute( x, y )
     {
-        const distance = Math.sqrt( squaredEuclidean( x, y ) );
+        const distance = euclidean( x, y );
         return Math.exp( -distance / this.sigma );
     }
 }

@@ -7,6 +7,7 @@ const PolynomialKernel = require( "ml-polynomial-kernel" );
 const ExponentialKernel = require( "./kernels/exponential-kernel" );
 const LaplacianKernel = require( "./kernels/laplacian-kernel" );
 const ANOVAKernel = require( "./kernels/anova-kernel" );
+const RationalQuadraticKernel = require( "./kernels/rational-quadratic-kernel" );
 
 class Kernel
 {
@@ -15,7 +16,8 @@ class Kernel
         var kernelType = {"gaussian" : new GaussianKernel( options ), "rbf" : new GaussianKernel( options ),
             "polynomial" : new PolynomialKernel( options ), "poly" : new PolynomialKernel( options ),
             "exponential" : new ExponentialKernel( options ), "laplacian" : new LaplacianKernel( options ),
-            "anova" : new ANOVAKernel( options )};
+            "anova" : new ANOVAKernel( options ), "rational quadratic" : new RationalQuadraticKernel( options ),
+            "rational" : new RationalQuadraticKernel( options )};
         if( typeof type === "string" )
         {
             type = type.toLowerCase();

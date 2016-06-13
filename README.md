@@ -27,6 +27,7 @@ __Available kernels__
 * `anova` - [ANOVA kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#anova)
 * `rational quadratic` or `rational` - [Rational Quadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#rational)
 * `multiquadratic` - [Multiquadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#multiquadric)
+* `cauchy` - [Cauchy kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#cauchy)
 
 ### kernel.compute(inputs, landmarks)
 

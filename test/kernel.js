@@ -1,6 +1,6 @@
 "use strict";
 
-var Kernel = require( "../src/kernel" );
+var Kernel = require( ".." );
 
 describe( "kernel factory", function ()
 {

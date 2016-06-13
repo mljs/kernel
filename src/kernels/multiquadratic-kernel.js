@@ -7,7 +7,7 @@ const defaultOptions =
     constant : 1
 };
 
-class RationalQuadraticKernel
+class MultiquadraticKernel
 {
     constructor( options )
     {
@@ -17,8 +17,8 @@ class RationalQuadraticKernel
 
     compute( x, y )
     {
-        return 1 - ( squaredEuclidean( x, y ) / ( squaredEuclidean( x, y ) + this.constant ) );
+        return Math.sqrt( squaredEuclidean( x, y ) + this.constant * this.constant );
     }
 }
 
-module.exports = RationalQuadraticKernel;
+module.exports = MultiquadraticKernel;

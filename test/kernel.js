@@ -35,6 +35,11 @@ describe( "kernel factory", function ()
         var kernel = new Kernel( "rational quadratic" );
         Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
     } );
+    it( "should create a multiquadratic kernel function", function ()
+    {
+        var kernel = new Kernel( "multiquadratic" );
+        Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
+    } );
     it( "should be case-insensitive", function ()
     {
         new Kernel( "GaUsSian" );

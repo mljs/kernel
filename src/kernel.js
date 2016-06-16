@@ -32,15 +32,16 @@ class Kernel {
             landmarks = inputs;
         }
         const kernelMatrix = new Matrix(inputs.length, landmarks.length);
+        var i, j;
         if (inputs === landmarks) { // fast path, matrix is symmetric
-            for (var i = 0; i < inputs.length; i++) {
-                for (var j = i; j < inputs.length; j++) {
+            for (i = 0; i < inputs.length; i++) {
+                for (j = i; j < inputs.length; j++) {
                     kernelMatrix[i][j] = kernelMatrix[j][i] = this.kernelFunction.compute(inputs[i], inputs[j]);
                 }
             }
         } else {
-            for (var i = 0; i < inputs.length; i++) {
-                for (var j = 0; j < landmarks.length; j++) {
+            for (i = 0; i < inputs.length; i++) {
+                for (j = 0; j < landmarks.length; j++) {
                     kernelMatrix[i][j] = this.kernelFunction.compute(inputs[i], landmarks[j]);
                 }
             }

@@ -6,7 +6,7 @@ const GaussianKernel = require('ml-gaussian-kernel');
 const PolynomialKernel = require('ml-polynomial-kernel');
 
 class Kernel {
-    constructor (type, options) {
+    constructor(type, options) {
         if (typeof type === 'string') {
             switch (type.toLowerCase()) {
                 case 'gaussian':

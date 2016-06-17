@@ -1,23 +1,23 @@
-"use strict";
+'use strict';
 
-const squaredEuclidean = require( "ml-euclidean-distance" ).squared;
+const squaredEuclidean = require('ml-euclidean-distance').squared;
 
 const defaultOptions =
-{
-    constant : 1
-};
+    {
+        constant: 1
+    };
 
 class RationalQuadraticKernel
 {
-    constructor( options )
+    constructor(options)
     {
-        options = Object.assign( {}, defaultOptions, options );
+        options = Object.assign({}, defaultOptions, options);
         this.constant = options.constant;
     }
 
-    compute( x, y )
+    compute(x, y)
     {
-        return 1 - ( squaredEuclidean( x, y ) / ( squaredEuclidean( x, y ) + this.constant ) );
+        return 1 - (squaredEuclidean(x, y) / (squaredEuclidean(x, y) + this.constant));
     }
 }
 

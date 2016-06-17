@@ -1,23 +1,23 @@
-"use strict";
+'use strict';
 
-const squaredEuclidean = require( "ml-euclidean-distance" ).squared;
+const squaredEuclidean = require('ml-euclidean-distance').squared;
 
 const defaultOptions =
-{
-    sigma : 1
-};
+    {
+        sigma: 1
+    };
 
 class CauchyKernel
 {
-    constructor( options )
+    constructor(options)
     {
-        options = Object.assign( {}, defaultOptions, options );
+        options = Object.assign({}, defaultOptions, options);
         this.sigma = options.sigma;
     }
 
-    compute( x, y )
+    compute(x, y)
     {
-        return 1 / ( 1 + squaredEuclidean( x, y ) / ( this.sigma * this.sigma ) );
+        return 1 / (1 + squaredEuclidean(x, y) / (this.sigma * this.sigma));
     }
 }
 

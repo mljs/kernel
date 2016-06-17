@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/jorge/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/home/jorge/.nvm/versions/node/v5.0.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'eslint' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 verbose run-script [ 'preeslint', 'eslint', 'posteslint' ]
+5 info lifecycle ml-kernel@2.0.0~preeslint: ml-kernel@2.0.0
+6 silly lifecycle ml-kernel@2.0.0~preeslint: no script for preeslint, continuing
+7 info lifecycle ml-kernel@2.0.0~eslint: ml-kernel@2.0.0
+8 verbose lifecycle ml-kernel@2.0.0~eslint: unsafe-perm in lifecycle true
+9 verbose lifecycle ml-kernel@2.0.0~eslint: PATH: /home/jorge/.nvm/versions/node/v5.0.0/lib/node_modules/npm/bin/node-gyp-bin:/home/jorge/code/cheminfo/kernel/node_modules/.bin:/home/jorge/.nvm/versions/node/v5.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/jorge/bin:/usr/local/java/jdk1.8.0_74/bin:/home/jorge/bin:/opt/VSCode-linux-x64
+10 verbose lifecycle ml-kernel@2.0.0~eslint: CWD: /home/jorge/code/cheminfo/kernel
+11 silly lifecycle ml-kernel@2.0.0~eslint: Args: [ '-c', 'eslint src' ]
+12 silly lifecycle ml-kernel@2.0.0~eslint: Returned: code: 1  signal: null
+13 info lifecycle ml-kernel@2.0.0~eslint: Failed to exec eslint script
+14 verbose stack Error: ml-kernel@2.0.0 eslint: `eslint src`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/home/jorge/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/home/jorge/.nvm/versions/node/v5.0.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid ml-kernel@2.0.0
+16 verbose cwd /home/jorge/code/cheminfo/kernel
+17 error Linux 3.16.0-4-amd64
+18 error argv "/home/jorge/.nvm/versions/node/v5.0.0/bin/node" "/home/jorge/.nvm/versions/node/v5.0.0/bin/npm" "run" "eslint"
+19 error node v5.0.0
+20 error npm  v3.3.6
+21 error code ELIFECYCLE
+22 error ml-kernel@2.0.0 eslint: `eslint src`
+22 error Exit status 1
+23 error Failed at the ml-kernel@2.0.0 eslint script 'eslint src'.
+23 error This is most likely a problem with the ml-kernel package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     eslint src
+23 error You can get their info via:
+23 error     npm owner ls ml-kernel
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

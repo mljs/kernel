@@ -4,26 +4,36 @@ const Matrix = require('ml-matrix');
 
 const GaussianKernel = require('ml-gaussian-kernel');
 const PolynomialKernel = require('ml-polynomial-kernel');
+const ANOVAKernel = require('./kernels/anova-kernel');
+const CauchyKernel = require('./kernels/cauchy-kernel');
+const ExponentialKernel = require('./kernels/exponential-kernel');
+const HistogramKernel = require('./kernels/histogram-intersection-kernel');
+const LaplacianKernel = require('./kernels/laplacian-kernel');
+const MultiquadraticKernel = require('./kernels/multiquadratic-kernel');
+const RationalKernel = require('./kernels/rational-quadratic-kernel');
 
 class Kernel {
     constructor(type, options) {
+        var kernelType = {  'gaussian': new GaussianKernel(options),
+                            'rbf': new GaussianKernel(options),
+                            'polynomial': new PolynomialKernel(options),
+                            'poly': new PolynomialKernel(options),
+                            'anova': new ANOVAKernel(options),
+                            'cauchy': new CauchyKernel(options),
+                            'exponential': new ExponentialKernel(options),
+                            'histogram intersection': new HistogramKernel(options),
+                            'histogram': new HistogramKernel(options),
+                            'min': new HistogramKernel(options),
+                            'laplacian': new LaplacianKernel(options),
+                            'multiquadratic': new MultiquadraticKernel(options),
+                            'rational quadratic': new RationalKernel(options),
+                            'rational': new RationalKernel(options)};
         if (typeof type === 'string') {
-            switch (type.toLowerCase()) {
-                case 'gaussian':
-                case 'rbf':
-                    this.kernelFunction = new GaussianKernel(options);
-                    break;
-                case 'polynomial':
-                case 'poly':
-                    this.kernelFunction = new PolynomialKernel(options);
-                    break;
-                default:
-                    throw new Error('unsupported kernel type: ' + type);
-            }
-        } else if (typeof type === 'object' && typeof type.compute === 'function') {
-            this.kernelFunction = type;
-        } else {
-            throw new TypeError('first argument must be a valid kernel type or instance');
+            type = type.toLowerCase();
+            var aux = kernelType[type];
+            if (!aux)
+                throw new Error('unsupported kernel type: ' + type);
+            this.kernelFunction = aux;
         }
     }
 

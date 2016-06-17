@@ -2,22 +2,18 @@
 
 const euclidean = require('ml-euclidean-distance');
 
-const defaultOptions =
-    {
-        sigma: 1
-    };
+const defaultOptions = {
+    sigma: 1
+};
 
-class ExponentialKernel
-{
-    constructor(options)
-    {
+class ExponentialKernel {
+    constructor(options) {
         options = Object.assign({}, defaultOptions, options);
         this.sigma = options.sigma;
         this.divisor = 2 * options.sigma * options.sigma;
     }
 
-    compute(x, y)
-    {
+    compute(x, y) {
         const distance = euclidean(x, y);
         return Math.exp(-distance / this.divisor);
     }

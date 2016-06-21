@@ -4,21 +4,39 @@ const Matrix = require('ml-matrix');
 
 const GaussianKernel = require('ml-gaussian-kernel');
 const PolynomialKernel = require('ml-polynomial-kernel');
+const ANOVAKernel = require('./kernels/anova-kernel');
+const CauchyKernel = require('./kernels/cauchy-kernel');
+const ExponentialKernel = require('./kernels/exponential-kernel');
+const HistogramKernel = require('./kernels/histogram-intersection-kernel');
+const LaplacianKernel = require('./kernels/laplacian-kernel');
+const MultiquadraticKernel = require('./kernels/multiquadratic-kernel');
+const RationalKernel = require('./kernels/rational-quadratic-kernel');
+
+const kernelType = {
+    gaussian: GaussianKernel,
+    rbf: GaussianKernel,
+    polynomial: PolynomialKernel,
+    poly: PolynomialKernel,
+    anova: ANOVAKernel,
+    cauchy: CauchyKernel,
+    exponential: ExponentialKernel,
+    histogram: HistogramKernel,
+    min: HistogramKernel,
+    laplacian: LaplacianKernel,
+    multiquadratic: MultiquadraticKernel,
+    rational: RationalKernel
+};
 
 class Kernel {
     constructor(type, options) {
         if (typeof type === 'string') {
-            switch (type.toLowerCase()) {
-                case 'gaussian':
-                case 'rbf':
-                    this.kernelFunction = new GaussianKernel(options);
-                    break;
-                case 'polynomial':
-                case 'poly':
-                    this.kernelFunction = new PolynomialKernel(options);
-                    break;
-                default:
-                    throw new Error('unsupported kernel type: ' + type);
+            type = type.toLowerCase();
+            
+            var KernelConstructor = kernelType[type];
+            if (KernelConstructor) {
+                this.kernelFunction = new KernelConstructor(options);
+            } else {
+                throw new Error('unsupported kernel type: ' + type);
             }
         } else if (typeof type === 'object' && typeof type.compute === 'function') {
             this.kernelFunction = type;

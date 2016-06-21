@@ -32,7 +32,7 @@ describe( "kernel factory", function ()
     } );
     it( "should create a rational quadratic kernel function", function ()
     {
-        var kernel = new Kernel( "rational quadratic" );
+        var kernel = new Kernel( "rational" );
         Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[1]] );
     } );
     it( "should create a multiquadratic kernel function", function ()
@@ -47,7 +47,7 @@ describe( "kernel factory", function ()
     } );
     it( "should create a histogram intersection kernel function", function ()
     {
-        var kernel = new Kernel( "histogram intersection" );
+        var kernel = new Kernel( "histogram" );
         Array.from( kernel.compute( [[1, 1]], [[1, 1]] ) ).should.eql( [[2]] );
     } );
     it( "should be case-insensitive", function ()

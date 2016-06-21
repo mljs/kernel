@@ -12,28 +12,36 @@ const LaplacianKernel = require('./kernels/laplacian-kernel');
 const MultiquadraticKernel = require('./kernels/multiquadratic-kernel');
 const RationalKernel = require('./kernels/rational-quadratic-kernel');
 
+const kernelType = {
+    gaussian: GaussianKernel,
+    rbf: GaussianKernel,
+    polynomial: PolynomialKernel,
+    poly: PolynomialKernel,
+    anova: ANOVAKernel,
+    cauchy: CauchyKernel,
+    exponential: ExponentialKernel,
+    histogram: HistogramKernel,
+    min: HistogramKernel,
+    laplacian: LaplacianKernel,
+    multiquadratic: MultiquadraticKernel,
+    rational: RationalKernel
+};
+
 class Kernel {
     constructor(type, options) {
-        var kernelType = {  'gaussian': new GaussianKernel(options),
-                            'rbf': new GaussianKernel(options),
-                            'polynomial': new PolynomialKernel(options),
-                            'poly': new PolynomialKernel(options),
-                            'anova': new ANOVAKernel(options),
-                            'cauchy': new CauchyKernel(options),
-                            'exponential': new ExponentialKernel(options),
-                            'histogram intersection': new HistogramKernel(options),
-                            'histogram': new HistogramKernel(options),
-                            'min': new HistogramKernel(options),
-                            'laplacian': new LaplacianKernel(options),
-                            'multiquadratic': new MultiquadraticKernel(options),
-                            'rational quadratic': new RationalKernel(options),
-                            'rational': new RationalKernel(options)};
         if (typeof type === 'string') {
             type = type.toLowerCase();
-            var aux = kernelType[type];
-            if (!aux)
+            
+            var KernelConstructor = kernelType[type];
+            if (KernelConstructor) {
+                this.kernelFunction = new KernelConstructor(options);
+            } else {
                 throw new Error('unsupported kernel type: ' + type);
-            this.kernelFunction = aux;
+            }
+        } else if (typeof type === 'object' && typeof type.compute === 'function') {
+            this.kernelFunction = type;
+        } else {
+            throw new TypeError('first argument must be a valid kernel type or instance');
         }
     }
 

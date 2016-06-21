@@ -16,8 +16,8 @@ class ANOVAKernel {
         var sum = 0;
         var len = Math.min(x.length, y.length);
         for (var i = 1; i <= len; ++i) {
-            sum += Math.pow(Math.exp(-this.sigma * Math.pow(Math.pow(x[i - 1], i)
-                    - Math.pow(y[i - 1], i), 2)), this.degree);
+            sum += Math.pow(Math.exp(-this.sigma * Math.pow(Math.pow(x[i - 1], i) -
+                    Math.pow(y[i - 1], i), 2)), this.degree);
         }
         return sum;
     }

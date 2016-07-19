@@ -29,9 +29,12 @@ const kernelType = {
 
 class Kernel {
     constructor(type, options) {
+        this.kernelType = type;
+        if (type === 'linear') return;
+
         if (typeof type === 'string') {
             type = type.toLowerCase();
-            
+
             var KernelConstructor = kernelType[type];
             if (KernelConstructor) {
                 this.kernelFunction = new KernelConstructor(options);
@@ -49,6 +52,12 @@ class Kernel {
         if (landmarks === undefined) {
             landmarks = inputs;
         }
+
+        if (this.kernelType === 'linear') {
+            var matrix = new Matrix(inputs);
+            return matrix.mmul(new Matrix(landmarks).transpose());
+        }
+
         const kernelMatrix = new Matrix(inputs.length, landmarks.length);
         var i, j;
         if (inputs === landmarks) { // fast path, matrix is symmetric

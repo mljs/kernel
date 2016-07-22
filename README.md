@@ -19,7 +19,7 @@ This function can be called with a matrix of input vectors
 and optional landmarks. If no landmark is provided, the input vectors will be used.
 
 __Available kernels__
-
+* `linear` - Linear kernel
 * `gaussian` or `rbf` - [Gaussian (radial basis function) kernel](https://github.com/mljs/gaussian-kernel)
 * `polynomial` or `poly` - [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
 * `exponential` - [Exponential kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#exponential)

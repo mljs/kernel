@@ -20,8 +20,8 @@ and optional landmarks. If no landmark is provided, the input vectors will be us
 
 __Available kernels__
 * `linear` - Linear kernel
-* `gaussian` or `rbf` - [Gaussian (radial basis function) kernel](https://github.com/mljs/gaussian-kernel)
-* `polynomial` or `poly` - [Polynomial kernel](https://github.com/mljs/polynomial-kernel)
+* `gaussian` or `rbf` - [Gaussian (radial basis function) kernel](https://github.com/mljs/kernel-gaussian)
+* `polynomial` or `poly` - [Polynomial kernel](https://github.com/mljs/kernel-polynomial)
 * `exponential` - [Exponential kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#exponential)
 * `laplacian` - [Laplacian kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#laplacian)
 * `anova` - [ANOVA kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#anova)
@@ -29,6 +29,7 @@ __Available kernels__
 * `multiquadratic` - [Multiquadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#multiquadric)
 * `cauchy` - [Cauchy kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#cauchy)
 * `histogram` or `min` - [Histogram Intersection kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#histogram)
+* `sigmoid` or `mlp' - [Sigmoid (hyperbolic tangent) kernel](https://github.com/mljs/kernel-sigmoid)
 
 ### kernel.compute(inputs, landmarks)
 

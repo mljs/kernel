@@ -13,7 +13,8 @@ class RationalQuadraticKernel {
     }
 
     compute(x, y) {
-        return 1 - (squaredEuclidean(x, y) / (squaredEuclidean(x, y) + this.constant));
+        const distance = squaredEuclidean(x, y);
+        return 1 - (distance / (distance + this.constant));
     }
 }
 

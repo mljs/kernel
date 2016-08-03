@@ -2,8 +2,8 @@
 
 const Matrix = require('ml-matrix');
 
-const GaussianKernel = require('ml-gaussian-kernel');
-const PolynomialKernel = require('ml-polynomial-kernel');
+const GaussianKernel = require('ml-kernel-gaussian');
+const PolynomialKernel = require('ml-kernel-polynomial');
 const ANOVAKernel = require('./kernels/anova-kernel');
 const CauchyKernel = require('./kernels/cauchy-kernel');
 const ExponentialKernel = require('./kernels/exponential-kernel');
@@ -11,6 +11,7 @@ const HistogramKernel = require('./kernels/histogram-intersection-kernel');
 const LaplacianKernel = require('./kernels/laplacian-kernel');
 const MultiquadraticKernel = require('./kernels/multiquadratic-kernel');
 const RationalKernel = require('./kernels/rational-quadratic-kernel');
+const SigmoidKernel = require('ml-kernel-sigmoid');
 
 const kernelType = {
     gaussian: GaussianKernel,
@@ -24,7 +25,9 @@ const kernelType = {
     min: HistogramKernel,
     laplacian: LaplacianKernel,
     multiquadratic: MultiquadraticKernel,
-    rational: RationalKernel
+    rational: RationalKernel,
+    sigmoid: SigmoidKernel,
+    mlp: SigmoidKernel
 };
 
 class Kernel {

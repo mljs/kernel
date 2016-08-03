@@ -1,3 +1,13 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/mljs/kernel/compare/v2.2.0...v2.3.0) (2016-08-03)
+
+
+### Features
+
+* add sigmoid kernel ([dcdc0e0](https://github.com/mljs/kernel/commit/dcdc0e0))
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/mljs/kernel/compare/v2.1.0...v2.2.0) (2016-07-19)
 

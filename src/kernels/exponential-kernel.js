@@ -1,6 +1,6 @@
 'use strict';
 
-const euclidean = require('ml-euclidean-distance');
+const euclidean = require('ml-distance-euclidean');
 
 const defaultOptions = {
     sigma: 1

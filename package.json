@@ -48,6 +48,6 @@
     "ml-kernel-gaussian": "^2.0.1",
     "ml-kernel-polynomial": "^2.0.0",
     "ml-kernel-sigmoid": "^1.0.0",
-    "ml-matrix": "^1.3.0"
+    "ml-matrix": "^2.0.0"
   }
 }

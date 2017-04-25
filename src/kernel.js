@@ -1,6 +1,6 @@
 'use strict';
 
-const Matrix = require('ml-matrix');
+const Matrix = require('ml-matrix').Matrix;
 
 const GaussianKernel = require('ml-kernel-gaussian');
 const PolynomialKernel = require('ml-kernel-polynomial');
@@ -58,7 +58,7 @@ class Kernel {
 
         if (this.kernelType === 'linear') {
             var matrix = new Matrix(inputs);
-            return matrix.mmul(new Matrix(landmarks).transpose());
+            return matrix.mmul(new Matrix(landmarks).transposeView());
         }
 
         const kernelMatrix = new Matrix(inputs.length, landmarks.length);

@@ -36,9 +36,9 @@
   },
   "homepage": "https://github.com/mljs/kernel#readme",
   "devDependencies": {
-    "eslint": "^3.2.2",
+    "eslint": "^4.2.0",
     "eslint-config-cheminfo": "^1.1.2",
-    "eslint-plugin-no-only-tests": "^1.1.0",
+    "eslint-plugin-no-only-tests": "^2.0.0",
     "mocha": "^3.0.0",
     "mocha-better-spec-reporter": "^3.0.2",
     "should": "^11.1.0"
@@ -48,6 +48,6 @@
     "ml-kernel-gaussian": "^2.0.1",
     "ml-kernel-polynomial": "^2.0.0",
     "ml-kernel-sigmoid": "^1.0.0",
-    "ml-matrix": "^3.0.0"
+    "ml-matrix": "^5.0.0"
   }
 }

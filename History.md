@@ -1,3 +1,8 @@
+<a name="2.3.4"></a>
+## [2.3.4](https://github.com/mljs/kernel/compare/v2.3.3...v2.3.4) (2017-07-21)
+
+
+
 <a name="2.3.3"></a>
 ## [2.3.3](https://github.com/mljs/kernel/compare/v2.3.2...v2.3.3) (2017-04-25)
 

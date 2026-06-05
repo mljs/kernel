@@ -1,14 +1,12 @@
-'use strict';
-
-const { euclidean } = require('ml-distance-euclidean');
+import { euclidean } from 'ml-distance-euclidean';
 
 const defaultOptions = {
-  sigma: 1
+  sigma: 1,
 };
 
-class ExponentialKernel {
+export default class ExponentialKernel {
   constructor(options) {
-    options = Object.assign({}, defaultOptions, options);
+    options = { ...defaultOptions, ...options };
     this.sigma = options.sigma;
     this.divisor = 2 * options.sigma * options.sigma;
   }
@@ -18,5 +16,3 @@ class ExponentialKernel {
     return Math.exp(-distance / this.divisor);
   }
 }
-
-module.exports = ExponentialKernel;

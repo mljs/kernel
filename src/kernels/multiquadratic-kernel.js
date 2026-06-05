@@ -1,14 +1,12 @@
-'use strict';
-
-const { squaredEuclidean } = require('ml-distance-euclidean');
+import { squaredEuclidean } from 'ml-distance-euclidean';
 
 const defaultOptions = {
-  constant: 1
+  constant: 1,
 };
 
-class MultiquadraticKernel {
+export default class MultiquadraticKernel {
   constructor(options) {
-    options = Object.assign({}, defaultOptions, options);
+    options = { ...defaultOptions, ...options };
     this.constant = options.constant;
   }
 
@@ -16,5 +14,3 @@ class MultiquadraticKernel {
     return Math.sqrt(squaredEuclidean(x, y) + this.constant * this.constant);
   }
 }
-
-module.exports = MultiquadraticKernel;

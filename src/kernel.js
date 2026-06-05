@@ -1,17 +1,15 @@
-'use strict';
+import GaussianKernel from 'ml-kernel-gaussian';
+import PolynomialKernel from 'ml-kernel-polynomial';
+import SigmoidKernel from 'ml-kernel-sigmoid';
+import { Matrix, MatrixTransposeView } from 'ml-matrix';
 
-const { Matrix, MatrixTransposeView } = require('ml-matrix');
-const GaussianKernel = require('ml-kernel-gaussian');
-const PolynomialKernel = require('ml-kernel-polynomial');
-const SigmoidKernel = require('ml-kernel-sigmoid');
-
-const ANOVAKernel = require('./kernels/anova-kernel');
-const CauchyKernel = require('./kernels/cauchy-kernel');
-const ExponentialKernel = require('./kernels/exponential-kernel');
-const HistogramKernel = require('./kernels/histogram-intersection-kernel');
-const LaplacianKernel = require('./kernels/laplacian-kernel');
-const MultiquadraticKernel = require('./kernels/multiquadratic-kernel');
-const RationalKernel = require('./kernels/rational-quadratic-kernel');
+import ANOVAKernel from './kernels/anova-kernel.js';
+import CauchyKernel from './kernels/cauchy-kernel.js';
+import ExponentialKernel from './kernels/exponential-kernel.js';
+import HistogramKernel from './kernels/histogram-intersection-kernel.js';
+import LaplacianKernel from './kernels/laplacian-kernel.js';
+import MultiquadraticKernel from './kernels/multiquadratic-kernel.js';
+import RationalKernel from './kernels/rational-quadratic-kernel.js';
 
 const kernelType = {
   gaussian: GaussianKernel,
@@ -27,10 +25,10 @@ const kernelType = {
   multiquadratic: MultiquadraticKernel,
   rational: RationalKernel,
   sigmoid: SigmoidKernel,
-  mlp: SigmoidKernel
+  mlp: SigmoidKernel,
 };
 
-class Kernel {
+export default class Kernel {
   constructor(type, options) {
     this.kernelType = type;
     if (type === 'linear') return;
@@ -38,7 +36,7 @@ class Kernel {
     if (typeof type === 'string') {
       type = type.toLowerCase();
 
-      var KernelConstructor = kernelType[type];
+      const KernelConstructor = kernelType[type];
       if (KernelConstructor) {
         this.kernelFunction = new KernelConstructor(options);
       } else {
@@ -48,7 +46,7 @@ class Kernel {
       this.kernelFunction = type;
     } else {
       throw new TypeError(
-        'first argument must be a valid kernel type or instance'
+        'first argument must be a valid kernel type or instance',
       );
     }
   }
@@ -71,7 +69,7 @@ class Kernel {
         for (let j = i; j < inputs.rows; j++) {
           const value = this.kernelFunction.compute(
             inputs.getRow(i),
-            inputs.getRow(j)
+            inputs.getRow(j),
           );
           kernelMatrix.set(i, j, value);
           kernelMatrix.set(j, i, value);
@@ -83,7 +81,7 @@ class Kernel {
           kernelMatrix.set(
             i,
             j,
-            this.kernelFunction.compute(inputs.getRow(i), landmarks.getRow(j))
+            this.kernelFunction.compute(inputs.getRow(i), landmarks.getRow(j)),
           );
         }
       }
@@ -91,5 +89,3 @@ class Kernel {
     return kernelMatrix;
   }
 }
-
-module.exports = Kernel;

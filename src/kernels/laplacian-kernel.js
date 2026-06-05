@@ -1,14 +1,12 @@
-'use strict';
-
-const { euclidean } = require('ml-distance-euclidean');
+import { euclidean } from 'ml-distance-euclidean';
 
 const defaultOptions = {
-  sigma: 1
+  sigma: 1,
 };
 
-class LaplacianKernel {
+export default class LaplacianKernel {
   constructor(options) {
-    options = Object.assign({}, defaultOptions, options);
+    options = { ...defaultOptions, ...options };
     this.sigma = options.sigma;
   }
 
@@ -17,5 +15,3 @@ class LaplacianKernel {
     return Math.exp(-distance / this.sigma);
   }
 }
-
-module.exports = LaplacianKernel;

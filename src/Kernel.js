@@ -1,15 +1,15 @@
-import GaussianKernel from 'ml-kernel-gaussian';
-import PolynomialKernel from 'ml-kernel-polynomial';
-import SigmoidKernel from 'ml-kernel-sigmoid';
+import { GaussianKernel } from 'ml-kernel-gaussian';
+import { PolynomialKernel } from 'ml-kernel-polynomial';
+import { SigmoidKernel } from 'ml-kernel-sigmoid';
 import { Matrix, MatrixTransposeView } from 'ml-matrix';
 
-import ANOVAKernel from './kernels/anova-kernel.js';
-import CauchyKernel from './kernels/cauchy-kernel.js';
-import ExponentialKernel from './kernels/exponential-kernel.js';
-import HistogramKernel from './kernels/histogram-intersection-kernel.js';
-import LaplacianKernel from './kernels/laplacian-kernel.js';
-import MultiquadraticKernel from './kernels/multiquadratic-kernel.js';
-import RationalKernel from './kernels/rational-quadratic-kernel.js';
+import { ANOVAKernel } from './kernels/ANOVAKernel.js';
+import { CauchyKernel } from './kernels/CauchyKernel.js';
+import { ExponentialKernel } from './kernels/ExponentialKernel.js';
+import { HistogramIntersectionKernel } from './kernels/HistogramIntersectionKernel.js';
+import { LaplacianKernel } from './kernels/LaplacianKernel.js';
+import { MultiquadraticKernel } from './kernels/MultiquadraticKernel.js';
+import { RationalQuadraticKernel } from './kernels/RationalQuadraticKernel.js';
 
 const kernelType = {
   gaussian: GaussianKernel,
@@ -19,11 +19,11 @@ const kernelType = {
   anova: ANOVAKernel,
   cauchy: CauchyKernel,
   exponential: ExponentialKernel,
-  histogram: HistogramKernel,
-  min: HistogramKernel,
+  histogram: HistogramIntersectionKernel,
+  min: HistogramIntersectionKernel,
   laplacian: LaplacianKernel,
   multiquadratic: MultiquadraticKernel,
-  rational: RationalKernel,
+  rational: RationalQuadraticKernel,
   sigmoid: SigmoidKernel,
   mlp: SigmoidKernel,
 };
@@ -32,7 +32,7 @@ const kernelType = {
  * Factory that builds a kernel from its name (or a custom kernel instance) and
  * computes the kernel matrix between sets of vectors.
  */
-export default class Kernel {
+export class Kernel {
   /**
    * Create a new kernel.
    * @param {string|object} type - Name of the kernel (e.g. `gaussian`, `polynomial`,

@@ -7,7 +7,7 @@ const defaultOptions = {
 /**
  * Exponential kernel.
  */
-export default class ExponentialKernel {
+export class ExponentialKernel {
   /**
    * Create a new exponential kernel.
    * @param {object} [options] - Kernel options.

@@ -1,7 +1,7 @@
 /**
  * Histogram intersection kernel.
  */
-export default class HistogramIntersectionKernel {
+export class HistogramIntersectionKernel {
   /**
    * Compute the value of the kernel between two vectors.
    * @param {number[]} x - First vector.

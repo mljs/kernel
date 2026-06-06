@@ -1,21 +1,22 @@
-import { euclidean } from 'ml-distance-euclidean';
-
 const defaultOptions = {
   sigma: 1,
+  degree: 1,
 };
 
 /**
- * Laplacian kernel.
+ * ANOVA kernel.
  */
-export default class LaplacianKernel {
+export class ANOVAKernel {
   /**
-   * Create a new Laplacian kernel.
+   * Create a new ANOVA kernel.
    * @param {object} [options] - Kernel options.
    * @param {number} [options.sigma=1] - Value for the sigma parameter.
+   * @param {number} [options.degree=1] - Degree of the kernel.
    */
   constructor(options) {
     options = { ...defaultOptions, ...options };
     this.sigma = options.sigma;
+    this.degree = options.degree;
   }
 
   /**
@@ -25,7 +26,13 @@ export default class LaplacianKernel {
    * @returns {number} The dot product between `x` and `y` in feature space.
    */
   compute(x, y) {
-    const distance = euclidean(x, y);
-    return Math.exp(-distance / this.sigma);
+    let sum = 0;
+    let len = Math.min(x.length, y.length);
+    for (let i = 1; i <= len; ++i) {
+      sum +=
+        Math.exp(-this.sigma * (x[i - 1] ** i - y[i - 1] ** i) ** 2) **
+        this.degree;
+    }
+    return sum;
   }
 }

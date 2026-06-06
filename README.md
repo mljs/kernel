@@ -40,7 +40,7 @@ The function returns a kernel matrix of feature space vectors.
 ## Example
 
 ```js
-import Kernel from 'ml-kernel';
+import { Kernel } from 'ml-kernel';
 
 const kernel = new Kernel('gaussian', { sigma: 1 });
 const result = kernel.compute([

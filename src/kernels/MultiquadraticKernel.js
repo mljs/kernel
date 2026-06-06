@@ -1,21 +1,21 @@
 import { squaredEuclidean } from 'ml-distance-euclidean';
 
 const defaultOptions = {
-  sigma: 1,
+  constant: 1,
 };
 
 /**
- * Cauchy kernel.
+ * Multiquadratic kernel.
  */
-export default class CauchyKernel {
+export class MultiquadraticKernel {
   /**
-   * Create a new Cauchy kernel.
+   * Create a new multiquadratic kernel.
    * @param {object} [options] - Kernel options.
-   * @param {number} [options.sigma=1] - Value for the sigma parameter.
+   * @param {number} [options.constant=1] - Value for the constant.
    */
   constructor(options) {
     options = { ...defaultOptions, ...options };
-    this.sigma = options.sigma;
+    this.constant = options.constant;
   }
 
   /**
@@ -25,6 +25,6 @@ export default class CauchyKernel {
    * @returns {number} The dot product between `x` and `y` in feature space.
    */
   compute(x, y) {
-    return 1 / (1 + squaredEuclidean(x, y) / (this.sigma * this.sigma));
+    return Math.sqrt(squaredEuclidean(x, y) + this.constant * this.constant);
   }
 }

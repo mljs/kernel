@@ -5,11 +5,11 @@ const defaultOptions = {
 };
 
 /**
- * Multiquadratic kernel.
+ * Rational quadratic kernel.
  */
-export default class MultiquadraticKernel {
+export class RationalQuadraticKernel {
   /**
-   * Create a new multiquadratic kernel.
+   * Create a new rational quadratic kernel.
    * @param {object} [options] - Kernel options.
    * @param {number} [options.constant=1] - Value for the constant.
    */
@@ -25,6 +25,7 @@ export default class MultiquadraticKernel {
    * @returns {number} The dot product between `x` and `y` in feature space.
    */
   compute(x, y) {
-    return Math.sqrt(squaredEuclidean(x, y) + this.constant * this.constant);
+    const distance = squaredEuclidean(x, y);
+    return 1 - distance / (distance + this.constant);
   }
 }

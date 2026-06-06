@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import Kernel from '../kernel.js';
+import { Kernel } from '../index.js';
 
 test('should compute a linear kernel', () => {
   const kernel = new Kernel('linear');

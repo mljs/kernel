@@ -4,7 +4,7 @@
   "description": "A factory for kernel functions",
   "type": "module",
   "exports": {
-    ".": "./src/kernel.js"
+    ".": "./src/index.js"
   },
   "files": [
     "src"
@@ -42,9 +42,9 @@
   "homepage": "https://github.com/mljs/kernel#readme",
   "dependencies": {
     "ml-distance-euclidean": "^3.0.1",
-    "ml-kernel-gaussian": "^2.0.2",
-    "ml-kernel-polynomial": "^2.1.0",
-    "ml-kernel-sigmoid": "^1.1.0",
+    "ml-kernel-gaussian": "^3.0.0",
+    "ml-kernel-polynomial": "^3.0.0",
+    "ml-kernel-sigmoid": "^2.0.0",
     "ml-matrix": "^6.12.2"
   },
   "devDependencies": {

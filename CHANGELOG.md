@@ -3,6 +3,18 @@
 
 
 <a name="2.3.4"></a>
+## [4.0.0](https://github.com/mljs/kernel/compare/v3.0.0...v4.0.0) (2026-06-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* ml-kernel no longer has a default export. Replace `import Kernel from 'ml-kernel'` with `import { Kernel } from 'ml-kernel'`.
+
+### Features
+
+* migrate to ESM and align with current standards ([c6d3f35](https://github.com/mljs/kernel/commit/c6d3f35010080f3653deb5334b9385df9a0d7122))
+* use named exports with a barrel index.js ([8cb3abe](https://github.com/mljs/kernel/commit/8cb3abef4787ccf7ff926de4eb2815110ccded9d))
+
 ## [2.3.4](https://github.com/mljs/kernel/compare/v2.3.3...v2.3.4) (2017-07-21)
 
 

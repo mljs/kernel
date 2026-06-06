@@ -3,6 +3,13 @@
 
 
 <a name="2.3.4"></a>
+## [4.0.1](https://github.com/mljs/kernel/compare/v4.0.0...v4.0.1) (2026-06-06)
+
+
+### Performance Improvements
+
+* cache matrix rows in Kernel.compute ([9898956](https://github.com/mljs/kernel/commit/9898956f0371030f8da4f16737aa38f149cef97b))
+
 ## [4.0.0](https://github.com/mljs/kernel/compare/v3.0.0...v4.0.0) (2026-06-06)
 
 

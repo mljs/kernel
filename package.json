@@ -43,8 +43,8 @@
   "dependencies": {
     "ml-distance-euclidean": "^3.0.1",
     "ml-kernel-gaussian": "^2.0.2",
-    "ml-kernel-polynomial": "^2.0.1",
-    "ml-kernel-sigmoid": "^1.0.1",
+    "ml-kernel-polynomial": "^2.1.0",
+    "ml-kernel-sigmoid": "^1.1.0",
     "ml-matrix": "^6.12.2"
   },
   "devDependencies": {

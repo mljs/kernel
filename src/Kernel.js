@@ -80,29 +80,43 @@ export class Kernel {
     }
 
     const kernelMatrix = new Matrix(inputs.rows, landmarks.rows);
+    // Extract each row once: getRow() allocates a new array, so calling it
+    // inside the O(n*m) loop would re-extract the same rows n (or m) times.
+    const inputRows = getRows(inputs);
     if (inputs === landmarks) {
       // fast path, matrix is symmetric
       for (let i = 0; i < inputs.rows; i++) {
         for (let j = i; j < inputs.rows; j++) {
-          const value = this.kernelFunction.compute(
-            inputs.getRow(i),
-            inputs.getRow(j),
-          );
+          const value = this.kernelFunction.compute(inputRows[i], inputRows[j]);
           kernelMatrix.set(i, j, value);
           kernelMatrix.set(j, i, value);
         }
       }
     } else {
+      const landmarkRows = getRows(landmarks);
       for (let i = 0; i < inputs.rows; i++) {
         for (let j = 0; j < landmarks.rows; j++) {
           kernelMatrix.set(
             i,
             j,
-            this.kernelFunction.compute(inputs.getRow(i), landmarks.getRow(j)),
+            this.kernelFunction.compute(inputRows[i], landmarkRows[j]),
           );
         }
       }
     }
     return kernelMatrix;
   }
+}
+
+/**
+ * Extract every row of a matrix once into an array of plain arrays.
+ * @param {import('ml-matrix').Matrix} matrix - Matrix to extract rows from.
+ * @returns {Array<Array<number>>} The matrix rows.
+ */
+function getRows(matrix) {
+  const rows = new Array(matrix.rows);
+  for (let i = 0; i < matrix.rows; i++) {
+    rows[i] = matrix.getRow(i);
+  }
+  return rows;
 }

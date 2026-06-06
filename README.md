@@ -29,13 +29,26 @@ and optional landmarks. If no landmark is provided, the input vectors will be us
 - `multiquadratic` - [Multiquadratic kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#multiquadric)
 - `cauchy` - [Cauchy kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#cauchy)
 - `histogram` or `min` - [Histogram Intersection kernel](http://crsouza.com/2010/03/kernel-functions-for-machine-learning-applications/#histogram)
-- `sigmoid` or `mlp' - [Sigmoid (hyperbolic tangent) kernel](https://github.com/mljs/kernel-sigmoid)
+- `sigmoid` or `mlp` - [Sigmoid (hyperbolic tangent) kernel](https://github.com/mljs/kernel-sigmoid)
 
 ### kernel.compute(inputs, landmarks)
 
 This function can be called with a matrix of input vectors and optional landmarks.
 If no landmark is provided, the input vectors will be used.  
 The function returns a kernel matrix of feature space vectors.
+
+## Example
+
+```js
+import Kernel from 'ml-kernel';
+
+const kernel = new Kernel('gaussian', { sigma: 1 });
+const result = kernel.compute([
+  [1, 2],
+  [3, 4],
+]);
+// result is an ml-matrix Matrix instance
+```
 
 ## License
 

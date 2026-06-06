@@ -28,7 +28,17 @@ const kernelType = {
   mlp: SigmoidKernel,
 };
 
+/**
+ * Factory that builds a kernel from its name (or a custom kernel instance) and
+ * computes the kernel matrix between sets of vectors.
+ */
 export default class Kernel {
+  /**
+   * Create a new kernel.
+   * @param {string|object} type - Name of the kernel (e.g. `gaussian`, `polynomial`,
+   * `linear`, ...) or a custom kernel instance exposing a `compute(x, y)` method.
+   * @param {object} [options] - Options forwarded to the underlying kernel constructor.
+   */
   constructor(type, options) {
     this.kernelType = type;
     if (type === 'linear') return;
@@ -51,6 +61,13 @@ export default class Kernel {
     }
   }
 
+  /**
+   * Compute the kernel matrix between the input vectors and the landmarks.
+   * @param {Array<Array<number>>|import('ml-matrix').Matrix} inputs - Matrix of input row vectors.
+   * @param {Array<Array<number>>|import('ml-matrix').Matrix} [landmarks] - Matrix of landmark row
+   * vectors. When omitted, the input vectors are used as landmarks.
+   * @returns {import('ml-matrix').Matrix} The kernel matrix of feature-space dot products.
+   */
   compute(inputs, landmarks) {
     inputs = Matrix.checkMatrix(inputs);
     if (landmarks === undefined) {
